@@ -1,0 +1,1213 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>你的說話氣質，像哪一種台灣名人感？｜聲現力 voice to shine</title>
+<meta name="description" content="測出你一開口給人的聲音印象，找到你的台灣名人感、聲音優勢與開口前 10 分鐘建議。">
+<style>
+:root{
+  --bg:#f8f7f4;
+  --paper:#fffdf9;
+  --ink:#2d2d2d;
+  --ink-strong:#1a1a1a;
+  --muted:#756f66;
+  --line:#eadfce;
+  --gold:#e8d5b7;
+  --gold-deep:#c7a878;
+  --brown:#8b6f47;
+  --brown-dark:#6b4c2a;
+  --sage:#5b7a5e;
+  --sage-soft:#e8efe6;
+  --red:#9b4d4d;
+  --shadow:0 20px 60px rgba(45,45,45,.12);
+  --radius:8px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+  letter-spacing:0;
+  line-height:1.65;
+}
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  background:
+    linear-gradient(135deg,rgba(232,213,183,.65),rgba(248,247,244,.82) 42%,rgba(232,239,230,.72)),
+    radial-gradient(circle at 50% 0%,rgba(255,255,255,.72),transparent 42%);
+}
+a{color:inherit}
+button,input{font:inherit}
+button{cursor:pointer}
+.wrap{width:min(1120px,calc(100% - 32px));margin:0 auto}
+.view{display:none;min-height:100svh}
+.view.active{display:block}
+.topbar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  padding:18px 0;
+}
+.brand{
+  display:flex;
+  flex-direction:column;
+  gap:2px;
+  font-weight:800;
+  color:var(--ink-strong);
+}
+.brand small{font-size:12px;color:var(--muted);font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.pill{
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  padding:8px 12px;
+  border:1px solid rgba(139,111,71,.22);
+  background:rgba(255,253,249,.78);
+  border-radius:999px;
+  color:var(--brown-dark);
+  font-size:13px;
+  font-weight:800;
+  white-space:nowrap;
+}
+.hero{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(340px,480px);
+  gap:28px;
+  align-items:center;
+  padding:22px 0 52px;
+}
+.hero-copy{
+  padding:34px 0 20px;
+}
+.kicker{
+  color:var(--sage);
+  font-weight:900;
+  font-size:14px;
+  margin:0 0 12px;
+}
+h1{
+  margin:0;
+  color:var(--ink-strong);
+  font-size:clamp(42px,7vw,76px);
+  line-height:1.02;
+  letter-spacing:0;
+}
+.subtitle{
+  margin:20px 0 0;
+  max-width:620px;
+  color:#4f4a43;
+  font-size:clamp(18px,2.2vw,24px);
+  font-weight:700;
+}
+.hero-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-top:28px;
+}
+.btn{
+  border:0;
+  border-radius:8px;
+  padding:14px 18px;
+  background:var(--ink-strong);
+  color:white;
+  font-weight:900;
+  box-shadow:0 12px 26px rgba(26,26,26,.18);
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  min-height:50px;
+  text-decoration:none;
+}
+.btn.secondary{
+  background:rgba(255,253,249,.92);
+  color:var(--brown-dark);
+  border:1px solid rgba(139,111,71,.3);
+  box-shadow:none;
+}
+.btn:focus-visible,.option:focus-visible,input:focus-visible{outline:3px solid rgba(91,122,94,.35);outline-offset:2px}
+.mini-proof{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:10px;
+  margin-top:30px;
+  max-width:620px;
+}
+.proof-item{
+  border:1px solid rgba(139,111,71,.18);
+  background:rgba(255,253,249,.78);
+  border-radius:8px;
+  padding:12px;
+}
+.proof-item b{display:block;font-size:13px;color:var(--brown-dark)}
+.proof-item span{display:block;margin-top:4px;color:var(--muted);font-size:12px;line-height:1.45}
+.carousel-shell{
+  position:relative;
+  overflow:hidden;
+  border-radius:8px;
+  background:#2d2d2d;
+  box-shadow:var(--shadow);
+  min-height:610px;
+}
+.carousel-shell::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:2;
+  pointer-events:none;
+  background:
+    linear-gradient(90deg,#2d2d2d 0%,transparent 18%,transparent 82%,#2d2d2d 100%),
+    linear-gradient(0deg,rgba(45,45,45,.82),transparent 45%);
+}
+.cover-tag{
+  position:absolute;
+  top:18px;
+  left:18px;
+  z-index:3;
+  color:#fff9ed;
+  background:rgba(26,26,26,.58);
+  border:1px solid rgba(232,213,183,.38);
+  padding:8px 10px;
+  border-radius:8px;
+  font-size:12px;
+  font-weight:900;
+}
+.hero-track{
+  position:absolute;
+  top:0;
+  bottom:0;
+  left:0;
+  display:flex;
+  gap:12px;
+  padding:54px 12px 118px;
+  width:max-content;
+  animation:slideStars 34s linear infinite;
+}
+.hero-track:hover{animation-play-state:paused}
+@keyframes slideStars{
+  from{transform:translateX(0)}
+  to{transform:translateX(-50%)}
+}
+.star-card{
+  width:160px;
+  min-width:160px;
+  border:1px solid rgba(232,213,183,.3);
+  border-radius:8px;
+  overflow:hidden;
+  background:#1f1f1f;
+  color:white;
+  display:flex;
+  flex-direction:column;
+  text-align:left;
+  box-shadow:0 16px 35px rgba(0,0,0,.25);
+}
+.star-card img{
+  display:block;
+  width:100%;
+  height:240px;
+  object-fit:cover;
+  background:#3b352e;
+  filter:saturate(.94) contrast(1.02);
+}
+.star-card-body{padding:10px}
+.star-card strong{display:block;font-size:15px;line-height:1.35}
+.star-card span{display:block;margin-top:3px;font-size:12px;color:#eadfce;line-height:1.4}
+.cover-bottom{
+  position:absolute;
+  z-index:3;
+  left:18px;
+  right:18px;
+  bottom:18px;
+}
+.cover-bottom h2{
+  color:#fff9ed;
+  margin:0;
+  font-size:28px;
+  line-height:1.15;
+}
+.cover-bottom p{
+  color:#eadfce;
+  margin:8px 0 0;
+  font-size:14px;
+}
+.source-note{
+  margin-top:10px;
+  color:#dacbb8;
+  font-size:11px;
+  line-height:1.45;
+}
+.source-note a{color:#fff1d5}
+.panel{
+  width:min(850px,calc(100% - 32px));
+  margin:0 auto;
+  padding:22px 0 42px;
+}
+.quiz-card,.result-card{
+  background:rgba(255,253,249,.92);
+  border:1px solid rgba(139,111,71,.18);
+  border-radius:8px;
+  box-shadow:var(--shadow);
+}
+.quiz-card{padding:24px}
+.progress-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+  margin-bottom:18px;
+}
+.progress-text{
+  color:var(--brown-dark);
+  font-weight:900;
+  font-size:13px;
+  white-space:nowrap;
+}
+.progress{
+  height:9px;
+  flex:1;
+  background:#eee6da;
+  border-radius:999px;
+  overflow:hidden;
+}
+.bar{height:100%;width:0;background:linear-gradient(90deg,var(--sage),var(--gold-deep));transition:width .25s ease}
+.question{
+  margin:0 0 18px;
+  color:var(--ink-strong);
+  font-size:clamp(25px,4vw,38px);
+  line-height:1.22;
+}
+.question-sub{
+  margin:-4px 0 20px;
+  color:var(--muted);
+  font-size:15px;
+}
+.options{
+  display:grid;
+  gap:10px;
+}
+.option{
+  width:100%;
+  border:1px solid rgba(139,111,71,.22);
+  border-radius:8px;
+  padding:14px 14px;
+  background:white;
+  color:var(--ink);
+  text-align:left;
+  font-weight:800;
+  min-height:62px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  transition:transform .15s ease,border-color .15s ease,background .15s ease;
+}
+.option:hover{
+  transform:translateY(-1px);
+  border-color:rgba(91,122,94,.55);
+  background:#fbfaf7;
+}
+.option small{color:var(--brown);font-size:12px;font-weight:900;white-space:nowrap}
+.nav-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  margin-top:18px;
+}
+.ghost{
+  border:0;
+  background:transparent;
+  color:var(--muted);
+  font-weight:800;
+  padding:10px 0;
+}
+.result-card h2{margin:0;color:var(--ink-strong);font-size:32px;line-height:1.18}
+.result-card p{color:var(--muted)}
+.micro{
+  color:#8a8072;
+  font-size:12px;
+}
+.result-card{overflow:hidden}
+.result-hero{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 260px;
+  gap:22px;
+  padding:26px;
+  background:linear-gradient(135deg,#fffdf9,#f2eadf);
+}
+.result-photo{
+  border-radius:8px;
+  overflow:hidden;
+  border:1px solid rgba(139,111,71,.2);
+  background:#2d2d2d;
+  min-height:300px;
+}
+.result-photo img{
+  width:100%;
+  height:100%;
+  min-height:300px;
+  object-fit:cover;
+  display:block;
+}
+.result-label{
+  display:inline-flex;
+  border:1px solid rgba(91,122,94,.25);
+  background:var(--sage-soft);
+  color:var(--sage);
+  border-radius:999px;
+  padding:7px 10px;
+  font-size:12px;
+  font-weight:900;
+  margin-bottom:10px;
+}
+.result-title{font-size:clamp(32px,5vw,52px);line-height:1.05;margin:0;color:var(--ink-strong)}
+.result-vibe{
+  margin:12px 0 0;
+  font-size:18px;
+  color:var(--brown-dark);
+  font-weight:900;
+}
+.result-body{
+  padding:24px 26px 28px;
+  display:grid;
+  gap:18px;
+}
+.grid-2{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:12px;
+}
+.info-box{
+  border:1px solid rgba(139,111,71,.18);
+  background:white;
+  border-radius:8px;
+  padding:15px;
+}
+.info-box h3{
+  margin:0 0 8px;
+  color:var(--brown-dark);
+  font-size:15px;
+}
+.info-box p,.info-box ul{margin:0;color:#5b554d;font-size:14px}
+.info-box ul{padding-left:1.25em}
+.cta-band{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+  padding:16px;
+  border-radius:8px;
+  background:#2d2d2d;
+  color:#fff9ed;
+}
+.cta-band p{margin:0;color:#eadfce}
+.cta-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  align-items:center;
+  justify-content:flex-end;
+}
+.share-panel{
+  border:1px dashed rgba(91,122,94,.42);
+  background:#f6fbf3;
+  color:#344c36;
+  border-radius:8px;
+  padding:14px;
+}
+.share-panel h3{margin:0 0 6px;color:#344c36;font-size:16px}
+.share-panel p{margin:0;color:#415b43}
+.share-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:12px;
+}
+.credit-list{
+  margin:8px 0 0;
+  padding-left:1.2em;
+  color:#5b554d;
+  font-size:13px;
+}
+.credit-list a{color:var(--brown-dark);font-weight:800}
+.footer{
+  text-align:center;
+  color:#71695f;
+  font-size:13px;
+  padding:24px 0 32px;
+}
+.ig-link{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:6px;
+  color:var(--brown-dark);
+  font-weight:900;
+  text-decoration:none;
+}
+.ig-link svg{width:16px;height:16px}
+.toast{
+  position:fixed;
+  left:50%;
+  bottom:18px;
+  transform:translateX(-50%) translateY(20px);
+  opacity:0;
+  pointer-events:none;
+  background:#1a1a1a;
+  color:white;
+  padding:10px 14px;
+  border-radius:8px;
+  z-index:10;
+  transition:.2s ease;
+  font-size:14px;
+}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+@media (max-width:860px){
+  .hero{grid-template-columns:1fr;gap:18px;padding-top:6px}
+  .carousel-shell{min-height:520px}
+  .hero-track{padding-bottom:110px}
+  .star-card{width:138px;min-width:138px}
+  .star-card img{height:205px}
+  .mini-proof{grid-template-columns:1fr}
+  .result-hero{grid-template-columns:1fr}
+  .result-photo{min-height:360px}
+}
+@media (max-width:540px){
+  .wrap{width:min(100% - 22px,1120px)}
+  .topbar{align-items:flex-start}
+  .pill{font-size:12px;white-space:normal;text-align:right;justify-content:flex-end}
+  .hero-copy{padding-top:16px}
+  .hero-actions .btn{width:100%}
+  .carousel-shell{min-height:470px}
+  .cover-bottom h2{font-size:24px}
+  .panel{width:min(100% - 22px,850px)}
+  .quiz-card{padding:18px}
+  .grid-2{grid-template-columns:1fr}
+  .result-body,.result-hero{padding:18px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .hero-track{animation:none}
+  .option{transition:none}
+}
+</style>
+</head>
+<body>
+<main>
+  <section id="home" class="view active">
+    <div class="wrap">
+      <header class="topbar">
+        <div class="brand">
+          <span>聲現力 voice to shine</span>
+          <small>Jessie 聲音測驗</small>
+        </div>
+        <div class="pill">10 題｜約 2 分鐘｜測完看完整診斷</div>
+      </header>
+
+      <div class="hero">
+        <div class="hero-copy">
+          <p class="kicker">台灣名人感聲音測驗</p>
+          <h1>你的說話氣質，<br>像哪一種台灣名人感？</h1>
+          <p class="subtitle">測出你一開口給人的聲音印象。</p>
+          <div class="hero-actions">
+            <button class="btn" type="button" onclick="startQuiz()">開始聲音測驗</button>
+          </div>
+          <div class="mini-proof" aria-label="測驗重點">
+            <div class="proof-item">
+              <b>一眼有畫面</b>
+              <span>用台灣人熟悉的名人感，降低聲音描述的抽象感。</span>
+            </div>
+            <div class="proof-item">
+              <b>結果可分享</b>
+              <span>測完會得到一句好貼文、好限動的聲音人設。</span>
+            </div>
+            <div class="proof-item">
+              <b>接回訓練</b>
+              <span>每個結果都有開口前 10 分鐘建議，讓聲音訓練有方向。</span>
+            </div>
+          </div>
+        </div>
+
+        <aside class="carousel-shell" id="starPreview" aria-label="台灣名人感輪播">
+          <div class="cover-tag">點任何一張卡片開始測驗</div>
+          <div class="hero-track" id="heroTrack"></div>
+          <div class="cover-bottom">
+            <p>測完揭曉你的台灣名人感、適合場景與開口前 10 分鐘建議。</p>
+            <div class="source-note">
+              名人感僅作聲音印象參照，非合作、推薦或代言。封面照片來源：
+              <a href="https://commons.wikimedia.org/wiki/Commons:Reusing_content_outside_Wikimedia" target="_blank" rel="noopener">Wikimedia Commons</a>，
+              各圖請依原頁授權與署名規則使用。
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+    <div data-footer></div>
+  </section>
+
+  <section id="quiz" class="view">
+    <div class="panel">
+      <div class="topbar">
+        <div class="brand">
+          <span>你的說話氣質，像哪一種台灣名人感？</span>
+          <small>聲現力 voice to shine</small>
+        </div>
+        <button class="ghost" type="button" onclick="goHome()">回封面</button>
+      </div>
+      <div class="quiz-card">
+        <div class="progress-row">
+          <span class="progress-text" id="stepText">1 / 10</span>
+          <div class="progress" aria-hidden="true"><div class="bar" id="bar"></div></div>
+        </div>
+        <h2 class="question" id="questionText"></h2>
+        <p class="question-sub" id="questionSub"></p>
+        <div class="options" id="options"></div>
+        <div class="nav-row">
+          <button class="ghost" type="button" id="backBtn" onclick="goBack()">上一題</button>
+          <span class="micro">直覺選就好，不用選「最完美」的答案。</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="result" class="view">
+    <div class="panel">
+      <article class="result-card" id="resultCard"></article>
+    </div>
+  </section>
+</main>
+<div class="toast" id="toast"></div>
+
+<template id="footerTemplate">
+  <footer class="footer">
+    <a class="ig-link" href="https://www.instagram.com/jessiebyme/" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2">
+        <rect x="2" y="2" width="20" height="20" rx="5"></rect>
+        <circle cx="12" cy="12" r="4"></circle>
+        <circle cx="17.5" cy="6.5" r="1"></circle>
+      </svg>
+      訂閱我的 IG @jessiebyme
+    </a><br>
+    <strong>聲現力 voice to shine</strong><br>
+    <span>© 2026 voice to shine All rights reserved.</span>
+  </footer>
+</template>
+
+<script>
+const WEBINAR_URL = "https://forms.gle/aDktT6hyXn1jrSLa9";
+const SUBSTACK_URL = "https://jessiebyme.substack.com/welcome";
+const SITE_URL = "https://jessiebyme8.github.io/jessiebyme-test/";
+let currentResultId = "";
+
+function commonsPath(fileName){
+  return "https://commons.wikimedia.org/wiki/Special:FilePath/" + encodeURIComponent(fileName) + "?width=640";
+}
+
+const STARS = [
+  {
+    id:"ling",
+    label:"志玲姐姐感",
+    name:"林志玲",
+    file:"Chiling lin.jpg",
+    source:"https://commons.wikimedia.org/wiki/File:Chiling_lin.jpg",
+    credit:"Chiling lin.jpg"
+  },
+  {
+    id:"kevin",
+    label:"康永聊天感",
+    name:"蔡康永",
+    file:"第50屆金馬頒獎典禮主持人蔡康永走星光大道.jpg",
+    source:"https://commons.wikimedia.org/wiki/File:%E7%AC%AC50%E5%B1%86%E9%87%91%E9%A6%AC%E9%A0%92%E7%8D%8E%E5%85%B8%E7%A6%AE%E4%B8%BB%E6%8C%81%E4%BA%BA%E8%94%A1%E5%BA%B7%E6%B0%B8%E8%B5%B0%E6%98%9F%E5%85%89%E5%A4%A7%E9%81%93.jpg",
+    credit:"第50屆金馬頒獎典禮主持人蔡康永走星光大道.jpg"
+  },
+  {
+    id:"bowie",
+    label:"寶儀陪伴感",
+    name:"曾寶儀",
+    file:"2018臺北最High新年城開城記者會.jpg",
+    source:"https://commons.wikimedia.org/wiki/File:2018%E8%87%BA%E5%8C%97%E6%9C%80High%E6%96%B0%E5%B9%B4%E5%9F%8E%E9%96%8B%E5%9F%8E%E8%A8%98%E8%80%85%E6%9C%83.jpg",
+    credit:"2018臺北最High新年城開城記者會.jpg"
+  },
+  {
+    id:"tao",
+    label:"陶子帶場感",
+    name:"陶晶瑩",
+    file:"Matilda Tao (cropped).jpg",
+    source:"https://commons.wikimedia.org/wiki/File:Matilda_Tao_(cropped).jpg",
+    credit:"Matilda Tao (cropped).jpg"
+  },
+  {
+    id:"sandy",
+    label:"Sandy俐落感",
+    name:"Sandy 吳姍儒",
+    file:"Sandy Wu 2023.jpg",
+    source:"https://commons.wikimedia.org/wiki/File:Sandy_Wu_2023.jpg",
+    credit:"Sandy Wu 2023.jpg"
+  },
+  {
+    id:"lulu",
+    label:"Lulu熱場感",
+    name:"Lulu 黃路梓茵",
+    file:"影集《此時此刻》記者會_黃路梓茵.png",
+    source:"https://commons.wikimedia.org/wiki/File:影集《此時此刻》記者會_黃路梓茵.png",
+    credit:"影集《此時此刻》記者會_黃路梓茵.png"
+  },
+  {
+    id:"sisy",
+    label:"文茜知性感",
+    name:"陳文茜",
+    file:"陳文茜立委.jpg",
+    source:"https://commons.wikimedia.org/wiki/File:%E9%99%B3%E6%96%87%E8%8C%9C%E7%AB%8B%E5%A7%94.jpg",
+    credit:"陳文茜立委.jpg"
+  }
+];
+
+const QUESTIONS = [
+  {
+    text:"朋友第一次聽你講話，比較可能記住什麼？",
+    sub:"不是別人稱讚你的話，是你最常給出去的聲音印象。",
+    options:[
+      ["覺得你很溫柔、有質感，講話不會壓迫人","ling"],
+      ["覺得你很會聽，也很會把話說到心裡","bowie"],
+      ["覺得你很有想法，句子有留白又有觀點","kevin"],
+      ["覺得你反應快，場子不太會冷掉","tao"]
+    ]
+  },
+  {
+    text:"你最怕自己的聲音在什麼時候扣分？",
+    sub:"選那個最容易讓你心裡一沉的場景。",
+    options:[
+      ["錄音一聽，覺得太幼、太輕、沒有份量","ling"],
+      ["講到一半開始趕，重點散掉","sandy"],
+      ["需要安撫或說服別人時，聽起來不夠穩","bowie"],
+      ["要帶氣氛時，聲音跟不上現場節奏","lulu"]
+    ]
+  },
+  {
+    text:"輪到你自我介紹，你通常會怎麼處理？",
+    sub:"想像一個陌生但重要的場合。",
+    options:[
+      ["先微笑，把聲音放穩，讓大家舒服地認識你","ling"],
+      ["講得精簡一點，留一點空間給對方好奇","kevin"],
+      ["先把脈絡說清楚，讓大家知道可以相信你","sandy"],
+      ["先丟一個小笑點或反差，讓現場醒來","tao"]
+    ]
+  },
+  {
+    text:"你講到自己很熟的主題時，最容易出現哪種狀態？",
+    sub:"這題會看出你的聲音能量怎麼跑。",
+    options:[
+      ["越講越順，但句子可能變長，需要更會停頓","kevin"],
+      ["越講越熱，速度可能變快，需要更穩的節奏","lulu"],
+      ["越講越投入，但後半段聲音可能變虛或掉下去","bowie"],
+      ["越講越清楚，但可能少一點情緒溫度","sandy"]
+    ]
+  },
+  {
+    text:"如果你的聲音是一種節目開場，最像哪一種？",
+    sub:"請選最像你，而不是你最羨慕的。",
+    options:[
+      ["溫柔亮燈：慢慢靠近，但很有畫面","ling"],
+      ["深夜對談：一句話不急著說滿","kevin"],
+      ["陪你整理：把複雜情緒說得可以安放","bowie"],
+      ["現場開麥：一開場就能把注意力叫回來","tao"]
+    ]
+  },
+  {
+    text:"別人請你講重點時，你最自然的方式是？",
+    sub:"你的說話氣質會藏在整理資訊的方式裡。",
+    options:[
+      ["用很清楚的順序，讓人立刻抓到架構","sandy"],
+      ["用比喻和故事，讓人自己懂","bowie"],
+      ["用一句漂亮的觀點，把整件事翻過來看","kevin"],
+      ["用表情和節奏，讓對方先想繼續聽","lulu"]
+    ]
+  },
+  {
+    text:"如果你想讓聲音更理性、知性，你最想靠近哪一種感覺？",
+    sub:"這題會看出你的聲音，是偏向觀點留白，還是判斷清楚。",
+    options:[
+      ["有想法，但不急著壓過別人","kevin"],
+      ["資料清楚，判斷有力，聽得出主見","sisy"],
+      ["條理乾淨，讓人很快抓到重點","sandy"],
+      ["語氣穩定，讓人願意聽完完整脈絡","bowie"]
+    ]
+  },
+  {
+    text:"你最想把聲音練成哪一種工作狀態？",
+    sub:"這題會影響最後的 10 分鐘建議。",
+    options:[
+      ["柔和但不虛，讓人覺得舒服也信任","ling"],
+      ["安定有重量，講久也不散","bowie"],
+      ["清楚俐落，短短幾句就有重點","sandy"],
+      ["有能量又不失控，可以帶起現場","lulu"]
+    ]
+  },
+  {
+    text:"你最常使用聲音的地方是？",
+    sub:"這題不算分，但會放進你的結果提醒。",
+    scene:true,
+    options:[
+      ["日常對話、社交、自我介紹","daily"],
+      ["簡報、面試、會議、提案","work"],
+      ["授課、直播、工作坊、Podcast","teach"],
+      ["短影音、主持、舞台、活動","stage"]
+    ]
+  },
+  {
+    text:"如果只能留下一種印象，你最想讓人記得？",
+    sub:"最後一題，直覺選你想被記住的那個你。",
+    options:[
+      ["溫柔漂亮，但不是沒有主見","ling"],
+      ["有想法又有趣，但不急著證明自己","kevin"],
+      ["溫暖穩定，讓人願意多說一點","bowie"],
+      ["明亮有火花，一開口就有存在感","lulu"]
+    ]
+  }
+];
+
+const RESULTS = {
+  ling:{
+    label:"志玲姐姐感",
+    title:"溫柔亮面聲線",
+    anchor:"林志玲式的親和與精緻感",
+    file:"Chiling lin.jpg",
+    desc:"你一開口容易給人柔和、親近、有畫面的印象。這類聲音最迷人的地方，是讓人不自覺放鬆，覺得你很有質感、好靠近，也願意聽你慢慢說。",
+    strength:["親和力高，適合建立第一印象。","語氣容易有禮貌感與畫面感。","當你穩住句尾時，溫柔會變得更有份量。"],
+    risk:"容易被誤會成太輕、太軟、太客氣。尤其在報價、面試、說明專業時，如果氣息不穩或句尾往下掉，別人可能只聽到溫柔，沒有聽到你的底氣。",
+    warmup:"開口前 10 分鐘先做輕哼鳴 3 分鐘，再用 3 句自我介紹練句尾站穩。不要一開始就追求甜美，先讓聲音有核心，再讓溫柔長出來。"
+  },
+  kevin:{
+    label:"康永聊天感",
+    title:"有想法留白聲線",
+    anchor:"蔡康永式的觀點與空氣感",
+    file:"第50屆金馬頒獎典禮主持人蔡康永走星光大道.jpg",
+    desc:"你一開口容易給人有想法、會觀察、句子有層次的感覺。你的魅力不是大聲，而是能把話說得有角度，讓人覺得你不是只是在回答，而是在看見事情的另一面。",
+    strength:["很適合訪談、諮詢、觀點文延伸。","留白感強，容易讓人想聽下一句。","語氣穩時，會有很好的信任感與深度。"],
+    risk:"如果聲音太飄或停頓太散，有想法會變成距離感；如果句子太長，聽的人會覺得你在思考，但抓不到重點。",
+    warmup:"開口前 10 分鐘做 2 分鐘放鬆下巴，接著讀 5 句短句，每句只保留一個重點。練習停頓不是為了慢，而是讓觀點有位置。"
+  },
+  bowie:{
+    label:"寶儀陪伴感",
+    title:"溫暖安定聲線",
+    anchor:"曾寶儀式的陪伴與故事感",
+    file:"2018臺北最High新年城開城記者會.jpg",
+    desc:"你一開口容易讓人覺得被接住。你的聲音適合說故事、陪伴、帶人整理情緒，也適合把複雜的經驗說得讓人願意靠近。",
+    strength:["容易建立信任，讓人願意聽你說完整件事。","很適合電子報、Podcast、諮詢、陪伴型內容。","當聲音穩住時，溫暖會帶出很強的說服力。"],
+    risk:"如果講太久沒有段落，溫暖會變成鬆散；如果氣息沒支撐，後半段可能變小聲、句尾掉、聽起來比較累。",
+    warmup:"開口前 10 分鐘先做 3 分鐘唇顫或哼鳴，接著用一段 60 秒故事練三個停頓點。你的重點是讓溫暖有結構，讓陪伴不散掉。"
+  },
+  tao:{
+    label:"陶子帶場感",
+    title:"高反應控場聲線",
+    anchor:"陶晶瑩式的反應與場面感",
+    file:"Matilda Tao (cropped).jpg",
+    desc:"你一開口容易讓現場醒來。你很適合主持、直播、帶討論、開場，也適合在一群人注意力渙散時，把大家拉回同一個節奏。",
+    strength:["存在感強，很會抓住注意力。","反應快，容易讓場子有火花。","有機會把個人風格做得很鮮明。"],
+    risk:"能量一高，聲音可能變緊、變尖、變趕。別人會被你吸引，但也可能一下子感覺壓力太大，或聽不清你真正要說的重點。",
+    warmup:"開口前 10 分鐘先做肩頸和下巴放鬆，再用三段開場白練速度控制。你不是要把能量壓低，而是要讓能量有方向。"
+  },
+  sandy:{
+    label:"Sandy俐落感",
+    title:"清爽觀點聲線",
+    anchor:"Sandy 吳姍儒式的機智與節奏",
+    file:"Sandy Wu 2023.jpg",
+    desc:"你一開口容易給人清楚、反應快、有條理的印象。你的聲音優勢在於把事情說得輕巧、明亮、不拖泥帶水，適合簡報、面試、課程重點、短影音口播。",
+    strength:["資訊整理感強，容易讓人跟上。","節奏明亮，適合短內容與重點摘要。","語氣穩時會讓人覺得你可靠又不無聊。"],
+    risk:"如果速度太快，俐落會變成趕；如果重音太平均，別人會覺得你講很多資訊，卻不知道哪一句最重要。",
+    warmup:"開口前 10 分鐘用 5 個短句練重音，每句只強調一個字詞。接著錄 30 秒自我介紹，聽自己有沒有把句尾收好。"
+  },
+  lulu:{
+    label:"Lulu熱場感",
+    title:"明亮感染聲線",
+    anchor:"Lulu 黃路梓茵式的活力與親近",
+    file:"影集《此時此刻》記者會_黃路梓茵.png",
+    desc:"你一開口容易帶出明亮、活潑、想靠近的感覺。你很適合需要快速拉近距離的場景，像短影音、主持、直播開場、社群互動。",
+    strength:["感染力高，很容易讓人感覺有精神。","語氣親近，不太有距離感。","如果節奏穩，會很適合做高辨識度內容。"],
+    risk:"能量太滿時，聲音可能變高、語尾飛出去，或讓聽眾覺得熱鬧但記不得重點。你的訓練不是變安靜，而是讓活力有層次。",
+    warmup:"開口前 10 分鐘先做 3 分鐘低音哼鳴，讓聲音不要一直往上衝；再用同一句話練三種音量，找出最自然的明亮度。"
+  },
+  sisy:{
+    label:"文茜知性感",
+    title:"理性知性聲線",
+    anchor:"陳文茜式的判斷與知識感",
+    file:"陳文茜立委.jpg",
+    desc:"你一開口容易給人有資料、有判斷、有主見的印象。這類聲音最有力量的地方，不是情緒很滿，而是讓人覺得你有想過、看過、整理過，說出來的話有重量。",
+    strength:["很適合評論、分析、簡報、知識型內容。","語氣穩時，容易讓人感覺你有可信的判斷。","如果節奏清楚，知性會變成很強的專業辨識度。"],
+    risk:"容易被誤會成太銳利、太有距離，或像在下結論。尤其在面對陌生聽眾時，如果語氣太硬，別人可能先感覺被評斷，還沒聽見你的觀點。",
+    warmup:"開口前 10 分鐘先做 2 分鐘慢吐氣，讓身體不要急著衝出去；接著用一段 45 秒觀點練「一句判斷、一句理由、一句例子」。你的重點是讓知性有溫度，讓判斷不變成壓迫。"
+  }
+};
+
+let step = 0;
+let scores = {};
+let answers = [];
+let scene = "";
+
+function mountFooters(){
+  const template = document.getElementById("footerTemplate");
+  document.querySelectorAll("[data-footer]").forEach(slot=>{
+    slot.replaceWith(template.content.cloneNode(true));
+  });
+}
+
+function renderStars(){
+  const track = document.getElementById("heroTrack");
+  const cards = STARS.concat(STARS).map(star=>`
+    <button class="star-card" type="button" onclick="startQuiz()" aria-label="開始測驗，${star.name}">
+      <img src="${commonsPath(star.file)}" alt="${star.name}" loading="lazy">
+      <span class="star-card-body">
+        <strong>${star.name}</strong>
+        <span>測完揭曉你的聲音印象</span>
+      </span>
+    </button>
+  `).join("");
+  track.innerHTML = cards;
+}
+
+function showView(id){
+  document.querySelectorAll(".view").forEach(view=>view.classList.remove("active"));
+  document.getElementById(id).classList.add("active");
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function goHome(){showView("home")}
+
+function startQuiz(){
+  step = 0;
+  scores = {ling:0,kevin:0,bowie:0,tao:0,sandy:0,lulu:0,sisy:0};
+  answers = [];
+  scene = "";
+  showView("quiz");
+  renderQuestion();
+}
+
+function renderQuestion(){
+  const q = QUESTIONS[step];
+  document.getElementById("stepText").textContent = `${step + 1} / ${QUESTIONS.length}`;
+  document.getElementById("bar").style.width = `${((step + 1) / QUESTIONS.length) * 100}%`;
+  document.getElementById("questionText").textContent = q.text;
+  document.getElementById("questionSub").textContent = q.sub;
+  document.getElementById("backBtn").style.visibility = step === 0 ? "hidden" : "visible";
+  document.getElementById("options").innerHTML = q.options.map((option,index)=>`
+    <button class="option" type="button" onclick="chooseOption('${option[1]}')">
+      <span>${option[0]}</span>
+      <small>${String.fromCharCode(65 + index)}</small>
+    </button>
+  `).join("");
+}
+
+function chooseOption(value){
+  const q = QUESTIONS[step];
+  answers[step] = value;
+  if(q.scene){
+    scene = value;
+  }else{
+    scores[value] = (scores[value] || 0) + 1;
+  }
+  if(step < QUESTIONS.length - 1){
+    step += 1;
+    renderQuestion();
+  }else{
+    const resultId = getResultId();
+    renderResult(resultId);
+    showView("result");
+  }
+}
+
+function goBack(){
+  if(step === 0) return;
+  const previous = QUESTIONS[step - 1];
+  const previousAnswer = answers[step - 1];
+  if(previous && previousAnswer){
+    if(previous.scene){
+      scene = "";
+    }else if(scores[previousAnswer] > 0){
+      scores[previousAnswer] -= 1;
+    }
+  }
+  answers[step - 1] = null;
+  step -= 1;
+  renderQuestion();
+}
+
+function getResultId(){
+  const entries = Object.entries(scores).sort((a,b)=>b[1]-a[1]);
+  const highest = entries[0][1];
+  const tied = entries.filter(entry=>entry[1] === highest).map(entry=>entry[0]);
+  const finalPreference = answers[answers.length - 1];
+  if(tied.includes(finalPreference)) return finalPreference;
+  return entries[0][0];
+}
+
+function sceneText(){
+  const map = {
+    daily:"日常對話、社交、自我介紹",
+    work:"簡報、面試、會議、提案",
+    teach:"授課、直播、工作坊、Podcast",
+    stage:"短影音、主持、舞台、活動"
+  };
+  return map[scene] || "日常與工作說話場景";
+}
+
+function quizUrl(){
+  return SITE_URL;
+}
+
+function shareText(result){
+  return `我測出來是「${result.label}」：${result.title}\n\n你的說話氣質，像哪一種台灣名人感？\n${quizUrl()}`;
+}
+
+function wrapCanvasText(ctx,text,x,y,maxWidth,lineHeight,maxLines){
+  const chars = Array.from(text);
+  let line = "";
+  let lines = [];
+  chars.forEach(char=>{
+    const next = line + char;
+    if(ctx.measureText(next).width > maxWidth && line){
+      lines.push(line);
+      line = char;
+    }else{
+      line = next;
+    }
+  });
+  if(line) lines.push(line);
+  if(maxLines && lines.length > maxLines){
+    lines = lines.slice(0,maxLines);
+    lines[maxLines - 1] = lines[maxLines - 1].replace(/.$/,"...");
+  }
+  lines.forEach((item,index)=>ctx.fillText(item,x,y + index * lineHeight));
+  return y + lines.length * lineHeight;
+}
+
+function loadImageForCanvas(src){
+  return new Promise((resolve,reject)=>{
+    const img = new Image();
+    img.crossOrigin = "anonymous";
+    img.onload = ()=>resolve(img);
+    img.onerror = reject;
+    img.src = src;
+  });
+}
+
+function drawCoverImage(ctx,img,x,y,w,h){
+  const imgRatio = img.width / img.height;
+  const boxRatio = w / h;
+  let sx = 0;
+  let sy = 0;
+  let sw = img.width;
+  let sh = img.height;
+  if(imgRatio > boxRatio){
+    sw = img.height * boxRatio;
+    sx = (img.width - sw) / 2;
+  }else{
+    sh = img.width / boxRatio;
+    sy = (img.height - sh) / 2;
+  }
+  ctx.drawImage(img,sx,sy,sw,sh,x,y,w,h);
+}
+
+async function createResultImageBlob(result){
+  const canvas = document.createElement("canvas");
+  canvas.width = 1080;
+  canvas.height = 1920;
+  const ctx = canvas.getContext("2d");
+  ctx.fillStyle = "#f8f7f4";
+  ctx.fillRect(0,0,canvas.width,canvas.height);
+  ctx.fillStyle = "#2d2d2d";
+  ctx.fillRect(0,0,canvas.width,1040);
+  try{
+    const img = await loadImageForCanvas(commonsPath(result.file));
+    drawCoverImage(ctx,img,0,0,1080,1040);
+    const gradient = ctx.createLinearGradient(0,540,0,1040);
+    gradient.addColorStop(0,"rgba(45,45,45,0)");
+    gradient.addColorStop(1,"rgba(45,45,45,.86)");
+    ctx.fillStyle = gradient;
+    ctx.fillRect(0,540,1080,500);
+  }catch(error){
+    ctx.fillStyle = "#2d2d2d";
+    ctx.fillRect(0,0,1080,1040);
+  }
+  ctx.fillStyle = "rgba(248,247,244,.94)";
+  ctx.fillRect(70,830,940,650);
+  ctx.fillStyle = "#5b7a5e";
+  ctx.font = "700 34px -apple-system, BlinkMacSystemFont, 'Noto Sans TC', sans-serif";
+  ctx.fillText("聲現力 voice to shine",96,900);
+  ctx.fillStyle = "#1a1a1a";
+  ctx.font = "800 78px -apple-system, BlinkMacSystemFont, 'Noto Sans TC', sans-serif";
+  let nextY = wrapCanvasText(ctx,`我的台灣名人感：${result.label}`,96,1010,880,92,3);
+  ctx.fillStyle = "#6b4c2a";
+  ctx.font = "700 44px -apple-system, BlinkMacSystemFont, 'Noto Sans TC', sans-serif";
+  nextY = wrapCanvasText(ctx,result.title,96,nextY + 22,880,56,2);
+  ctx.fillStyle = "#5b554d";
+  ctx.font = "500 34px -apple-system, BlinkMacSystemFont, 'Noto Sans TC', sans-serif";
+  wrapCanvasText(ctx,"測出你一開口給人的聲音印象。",96,nextY + 42,880,46,2);
+  ctx.fillStyle = "#2d2d2d";
+  ctx.font = "800 38px -apple-system, BlinkMacSystemFont, 'Noto Sans TC', sans-serif";
+  ctx.fillText("一起測測看",96,1610);
+  ctx.fillStyle = "#6b4c2a";
+  ctx.font = "600 32px -apple-system, BlinkMacSystemFont, 'Noto Sans TC', sans-serif";
+  wrapCanvasText(ctx,quizUrl(),96,1662,880,42,3);
+  ctx.fillStyle = "#8b6f47";
+  ctx.font = "500 24px -apple-system, BlinkMacSystemFont, 'Noto Sans TC', sans-serif";
+  wrapCanvasText(ctx,"名人感僅為聲音印象參照，非合作、推薦或代言。",96,1814,880,32,2);
+  return new Promise(resolve=>canvas.toBlob(resolve,"image/png",.96));
+}
+
+function downloadBlob(blob,fileName){
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = fileName;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  URL.revokeObjectURL(url);
+}
+
+function renderSubscribeBlock(){
+  return `
+    <section class="info-box">
+      <h3>想讓你的聲音，不只被形容，而是真的被調整？</h3>
+      <p>訂閱聲現力電子報，我會寄給你：《開口前 10 分鐘聲音訓練》。</p>
+      <ul>
+        <li>開口前怎麼讓聲音醒來</li>
+        <li>怎麼聽自己的句尾有沒有掉</li>
+        <li>怎麼避免一開口就虛、趕、散</li>
+      </ul>
+      <div class="share-actions">
+        <a class="btn secondary" href="${SUBSTACK_URL}" target="_blank" rel="noopener">訂閱領取聲音訓練</a>
+      </div>
+    </section>
+  `;
+}
+
+function renderResult(id){
+  currentResultId = id;
+  const result = RESULTS[id];
+  const resultCard = document.getElementById("resultCard");
+  const sources = STARS.map(star=>`<li>${star.name}：<a href="${star.source}" target="_blank" rel="noopener">${star.credit}</a></li>`).join("");
+  resultCard.innerHTML = `
+    <div class="result-hero">
+      <div>
+        <span class="result-label">你的測驗結果</span>
+        <h2 class="result-title">${result.label}</h2>
+        <div class="result-vibe">${result.title}｜${result.anchor}</div>
+        <p>${result.desc}</p>
+      </div>
+      <div class="result-photo">
+        <img src="${commonsPath(result.file)}" alt="${result.label}">
+      </div>
+    </div>
+    <div class="result-body">
+      <div class="grid-2">
+        <section class="info-box">
+          <h3>你的聲音優勢</h3>
+          <ul>${result.strength.map(item=>`<li>${item}</li>`).join("")}</ul>
+        </section>
+        <section class="info-box">
+          <h3>容易被誤會的地方</h3>
+          <p>${result.risk}</p>
+        </section>
+      </div>
+      <section class="info-box">
+        <h3>你的常用場景提醒</h3>
+        <p>你選的是「${sceneText()}」。下次在這個場景開口前，不要只準備內容，也要讓聲音先進入工作狀態。</p>
+      </section>
+      <section class="info-box">
+        <h3>開口前 10 分鐘建議</h3>
+        <p>${result.warmup}</p>
+      </section>
+      <section class="share-panel">
+        <h3>分享你的測驗結果</h3>
+        <p>會產生一張含代表人物照片與測驗網址的結果圖。手機可直接用分享選單；不支援時會下載圖片，再手動貼到 IG 限動或 Threads。</p>
+        <div class="share-actions">
+          <button class="btn" type="button" onclick="shareToThreads()">分享到 Threads</button>
+          <button class="btn secondary" type="button" onclick="shareToInstagram()">IG 限動圖</button>
+        </div>
+      </section>
+      ${renderSubscribeBlock()}
+      <div class="cta-band">
+        <div>
+          <strong>如果你已經在教課、直播、錄內容，或正在用聲音建立專業形象</strong>
+          <p>歡迎報名免費講座【讓你的聲音，撐得起專業定價】。我會帶你看懂：你的聲音為什麼會影響信任感、專業感和定價感。</p>
+        </div>
+        <div class="cta-actions">
+          <a class="btn" href="${WEBINAR_URL}" target="_blank" rel="noopener">報名免費講座</a>
+        </div>
+      </div>
+      <section class="info-box">
+        <h3>照片與名人感聲明</h3>
+        <p>本測驗中的名人感僅為聲音印象參照，不代表本人合作、推薦、代言或實際聲音診斷。照片來源如下，各圖請依 Wikimedia Commons 原頁授權與署名規則使用。</p>
+        <ul class="credit-list">${sources}</ul>
+      </section>
+      <div class="nav-row">
+        <button class="btn secondary" type="button" onclick="goHome()">回封面</button>
+        <button class="btn" type="button" onclick="startQuiz()">再測一次</button>
+      </div>
+    </div>
+  `;
+  const footer = document.getElementById("footerTemplate").content.cloneNode(true);
+  resultCard.appendChild(footer);
+}
+
+async function shareImageFile(channel){
+  const result = RESULTS[currentResultId];
+  showToast("正在產生結果圖...");
+  const blob = await createResultImageBlob(result);
+  const fileName = `jessiebyme-test-${result.label}.png`;
+  const file = new File([blob],fileName,{type:"image/png"});
+  if(navigator.canShare && navigator.canShare({files:[file]})){
+    try{
+      await navigator.share({
+        title:"你的說話氣質，像哪一種台灣名人感？",
+        text:shareText(result),
+        url:quizUrl(),
+        files:[file]
+      });
+      return true;
+    }catch(error){
+      return true;
+    }
+  }
+  downloadBlob(blob,fileName);
+  if(channel === "instagram"){
+    window.open("https://www.instagram.com/","_blank","noopener,noreferrer");
+    showToast("已下載 IG 限動圖，請到 IG 上傳");
+  }else{
+    const url = "https://www.threads.net/intent/post?text=" + encodeURIComponent(shareText(result));
+    window.open(url,"_blank","noopener,noreferrer");
+    showToast("已下載結果圖，也已打開 Threads");
+  }
+  return false;
+}
+
+async function shareToThreads(){
+  await shareImageFile("threads");
+}
+
+async function shareToInstagram(){
+  await shareImageFile("instagram");
+}
+
+function showToast(message){
+  const toast = document.getElementById("toast");
+  toast.textContent = message;
+  toast.classList.add("show");
+  setTimeout(()=>toast.classList.remove("show"),1700);
+}
+
+mountFooters();
+renderStars();
+</script>
+</body>
+</html>
