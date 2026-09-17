@@ -532,7 +532,7 @@ h1{
             </div>
             <div class="proof-item">
               <b>練習寄到 Email</b>
-              <span>想看更多練習方式，再訂閱領取完整聲音訓練。</span>
+              <span>訂閱後立刻收到 3 分鐘練習，之後每週繼續練一個真實工作場景。</span>
             </div>
           </div>
         </div>
@@ -603,8 +603,7 @@ h1{
 </template>
 
 <script>
-const WEBINAR_URL = "https://forms.gle/aDktT6hyXn1jrSLa9";
-const SUBSTACK_URL = "https://jessiebyme8.substack.com/welcome";
+const SUBSTACK_EMBED_URL = "https://jessiebyme8.substack.com/embed";
 const SITE_URL = "https://jessiebyme8.github.io/jessiebyme-test/";
 let currentResultId = "";
 
@@ -1074,19 +1073,18 @@ function downloadBlob(blob,fileName){
   URL.revokeObjectURL(url);
 }
 
-function renderSubscribeBlock(){
+function renderSubscribeBlock(result){
   return `
     <section class="info-box">
-      <h3>想看你的聲音類型，接下來可以怎麼練？</h3>
-      <p>訂閱聲現力電子報，我會把更多練習方式寄到你的 Email。</p>
+      <h3>免費領取你的「${result.label}」3 分鐘練習</h3>
+      <p>輸入 Email，我會立刻把 Before／After 錄音練習寄給你。你不用模仿名人的聲音，只要拿自己真的要上課、直播、錄影或提案的內容來練。</p>
       <ul>
-        <li>你的類型適合先練哪一個方向</li>
-        <li>開口前 10 分鐘可以怎麼準備</li>
-        <li>怎麼聽出自己是不是虛、趕、散</li>
+        <li>找出你的類型最值得先調整的一個地方</li>
+        <li>用同一段內容錄下 A／B 兩個版本</li>
+        <li>之後每週收到一個真實工作場景聲音練習</li>
       </ul>
-      <div class="share-actions">
-        <a class="btn secondary" href="${SUBSTACK_URL}" target="_blank" rel="noopener">訂閱領取更多練習方式</a>
-      </div>
+      <iframe src="${SUBSTACK_EMBED_URL}" width="100%" height="320" style="border:1px solid #eee;background:#fff;border-radius:18px" frameborder="0" scrolling="no" title="訂閱聲現力講師聲音練習信"></iframe>
+      <p>訂閱後，第一封練習信會直接寄到你的信箱。</p>
     </section>
   `;
 }
@@ -1119,16 +1117,7 @@ function renderResult(id){
           <p>${result.risk}</p>
         </section>
       </div>
-      ${renderSubscribeBlock()}
-      <div class="cta-band">
-        <div>
-          <strong>如果你已經在教課、直播、錄內容，或正在用聲音建立專業形象</strong>
-          <p>歡迎報名免費講座【讓你的聲音，撐得起專業定價】。我會帶你看懂：你的聲音為什麼會影響信任感、專業感和定價感。</p>
-        </div>
-        <div class="cta-actions">
-          <a class="btn" href="${WEBINAR_URL}" target="_blank" rel="noopener">報名免費講座</a>
-        </div>
-      </div>
+      ${renderSubscribeBlock(result)}
       <section class="info-box">
         <h3>照片與名人感聲明</h3>
         <p>本測驗中的名人感僅為聲音印象參照，不代表本人合作、推薦、代言或實際聲音診斷。照片來源如下，各圖請依 Wikimedia Commons 原頁授權與署名規則使用。</p>
